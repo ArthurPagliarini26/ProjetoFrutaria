@@ -22,7 +22,7 @@ public class Atendente {
 		System.out.println("╚══════════════════════════════════════╝");
 		System.out.print("Digite sua escolha: ");
 		int opcao = input.nextInt();
-		input.nextLine(); // limpa quebra de linha
+		input.nextLine();
 		return opcao;
 	}
 
@@ -48,12 +48,14 @@ public class Atendente {
 
 	}
 
+
 	public void vizualizar(Fruta fruta) {
 		System.out.println("-------------------");
 		System.out.println("Nome: " + fruta.getNome());
 		System.out.println("Preço: R$" + fruta.getPreco());
 		System.out.println("Quantidade: " + fruta.getQuantidade());
 		System.out.println("Tipo: " + fruta.getTipo());
+		System.out.println("Código: " + fruta.getCodigo());
 	}
 
 	public String removerFruta() {

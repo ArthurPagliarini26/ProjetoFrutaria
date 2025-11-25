@@ -33,17 +33,28 @@ public class Fruta {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
 
 	private String nome;
 	private double preco;
 	private int quantidade;
 	private String tipo;
+	private int codigo;
+	private static int codigoAdicionar = 1;
 
 	public Fruta() {
 		this.nome = "";
 		this.preco = 0.0;
 		this.quantidade = 0;
 		this.tipo = "";
+		this.codigo = codigoAdicionar++;
 	}
 
 	public Fruta(String nome, double preco, int quantidade, String tipo) {
@@ -51,6 +62,7 @@ public class Fruta {
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.tipo = tipo;
+		this.codigo = codigoAdicionar++;
 	}
 
 }
