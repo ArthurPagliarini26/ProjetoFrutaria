@@ -14,7 +14,7 @@ public class AppFrutaria {
 		do {
 			opcaoMenuEscolhida = atendente.menuPrincipal();
 			estoque.gerenciarEstoque(opcaoMenuEscolhida, atendente);
-		} while (opcaoMenuEscolhida != 4);
+		} while (opcaoMenuEscolhida != 0);
 
 		atendente.finalizarApp();
 	}
