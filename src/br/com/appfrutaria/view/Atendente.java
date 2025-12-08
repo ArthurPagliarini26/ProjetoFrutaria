@@ -1,8 +1,8 @@
 package br.com.appfrutaria.view;
 
 import java.util.Scanner;
-import br.com.appfrutaria.model.Fruta;
-import br.com.appfrutaria.model.Verdura;
+import br.com.appfrutaria.model.*;
+
 
 public class Atendente {		
 	Scanner input;
@@ -18,14 +18,19 @@ public class Atendente {
 		System.out.println("╠══════════════════════════════════════╣");
 		System.out.println("║ 1. Cadastrar fruta                   ║");
 		System.out.println("║ 2. Cadastrar Verdura                 ║");
-		System.out.println("║ 3. Listar Fruta                      ║");
-		System.out.println("║ 4. Listar Verdura                    ║");
-		System.out.println("║ 5. Pesquisar Fruta                   ║");
-		System.out.println("║ 6. Pesquisar Verdura                 ║");
-		System.out.println("║ 7. Remover Fruta                     ║");
-		System.out.println("║ 8. Remover Verdura                   ║");
-		System.out.println("║ 9. Mostrar quantidade Verdura        ║");
-		System.out.println("║ 10. Mostrar quantidade Fruta         ║");
+		System.out.println("║ 3. Cadastrar Produto de Limpeza      ║");
+		System.out.println("║ 4. Listar Fruta                      ║");
+		System.out.println("║ 5. Listar Verdura                    ║");
+		System.out.println("║ 6. Listar Produto de Limpeza         ║");
+		System.out.println("║ 7. Pesquisar Fruta                   ║");
+		System.out.println("║ 8. Pesquisar Verdura                 ║");
+		System.out.println("║ 9. Pesquisar Produto de Limpeza      ║");
+		System.out.println("║ 10. Remover Fruta                    ║");
+		System.out.println("║ 11. Remover Verdura                  ║");
+		System.out.println("║ 12. Remover Produto de Limpeza       ║");
+		System.out.println("║ 13. Mostrar quantidade Fruta         ║");
+		System.out.println("║ 14. Mostrar quantidade Verdura       ║");
+		System.out.println("║ 15. M. quantidade Produto de Limpeza ║");
 		System.out.println("║ 0. Sair                              ║");
 		System.out.println("╚══════════════════════════════════════╝");
 		System.out.print("Digite sua escolha: ");
@@ -54,7 +59,7 @@ public class Atendente {
 
 	public double frutaPeso() {
 		input.nextLine();
-		System.out.print("Te amo pedro, mas quanto? ");
+		System.out.print("Digite o peso da fruta: ");
 		return input.nextDouble();
 
 	}
@@ -180,8 +185,77 @@ public class Atendente {
 		
 		
 	}
+	
+	//PRODUTO DE LIMPEZA
 
-	public void finalizarApp() {
+		public String produtoLimpezaNome() {
+			System.out.print("Digite o nome do produto de limpeza: ");
+			return input.nextLine();
+		}
+
+		public double produtoLimpezaPreco() {
+			System.out.print("Digite o preço do produto de limpeza: ");
+			return input.nextDouble();
+		}
+
+		public int produtoLimpezaQuantidade() {
+			System.out.print("Digite a quantidade do produto de limpeza: ");
+			return input.nextInt();
+		}
+
+		public String produtoLimpezaMarca() {
+			input.nextLine();
+			System.out.print("Digite a marca do produto de limpeza: ");
+			return input.nextLine();
+
+		}
+		
+		public void visualizarProdutoLimpeza(ProdutoDeLimpeza produtoDeLimpeza) {
+			System.out.println("-------------------");
+			System.out.println("Nome: " + produtoDeLimpeza.getNome());
+			System.out.println("Preço: R$" + produtoDeLimpeza.getPreco());
+			System.out.println("Quantidade: " + produtoDeLimpeza.getQuantidade());
+			System.out.println("Marca: " + produtoDeLimpeza.getMarca());
+			
+		}
+		
+		public String removerProdutoLimpeza() {
+			System.out.print("Digite o nome do produto de limpeza a remover: ");
+			return input.nextLine();
+		}
+
+		public void produtoLimpezaRemovido(String nome) {
+			System.out.println("O produto de limpeza " + nome + " foi removido.");
+		}
+		
+		public String pesquisarProdutoLimpeza() {
+			
+			System.out.print("Digite o produto de limpeza para pesquisar: ");
+			return input.nextLine();
+		}
+		
+		
+		public void mostrarQuantidadeProdutoLimpeza(int total) {
+			
+			System.out.println("O total de produto de limpeza comprados foi: " + total);
+			
+		}
+		
+		public void produtoLimpezaEncontrado(String nome) {
+			
+			System.out.println("O produto de limpeza " + nome + " foi encontrado");
+			
+		}
+
+		public void produtoLimpezaNaoEncontrado() {
+			System.out.println("produto de limpeza não encontrado.");
+		}
+
+	    public void finalizarApp() {
 		System.out.println("Encerrando sistema...");
 	}
+	    
+	    public void listaVazia() {
+	    	System.out.println("A lista ainda está vazia");
+	    }
 }

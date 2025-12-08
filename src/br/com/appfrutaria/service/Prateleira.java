@@ -3,19 +3,21 @@ package br.com.appfrutaria.service;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.appfrutaria.view.Atendente;
-import br.com.appfrutaria.model.Fruta;
-import br.com.appfrutaria.model.Verdura;
+import br.com.appfrutaria.model.*;
+
 
 public class Prateleira {
 	
 	List<Fruta> listaFruta;
     List<Verdura> listaVerdura;
+    List<Produto> listaProduto;
 	
 	
 	public Prateleira() {
 		
 		listaFruta = new ArrayList<>();
 		listaVerdura = new ArrayList<>();
+		listaProduto = new ArrayList<>();
 		
 	}
 
@@ -27,72 +29,137 @@ public class Prateleira {
 				int quantidade = atendente.frutaQuantidade();
 				double peso = atendente.frutaPeso();
 
-				Fruta fruta = new Fruta(nome, preco, quantidade, peso);
-				listaFruta.add(fruta);
+				Produto fruta = new Fruta(nome, preco, quantidade, peso);
+				listaProduto.add(fruta);
 			}
 			
 			case 2 -> {
-				
+					
 				String nome = atendente.verduraNome();
 				double preco = atendente.verduraPreco();
 				int quantidade = atendente.verduraQuantidade();
 				String tipo = atendente.verduraTipo();
 				
-				Verdura verdura = new Verdura(nome, preco, quantidade, tipo);
-				listaVerdura.add(verdura);
+				Produto verdura = new Verdura(nome, preco, quantidade, tipo);
+				listaProduto.add(verdura);
 				
 			}
 			
 			case 3 -> {
 				
-				for(Fruta fruta : listaFruta) {
-					atendente.visualizarFruta(fruta);
-				}
+				String nome = atendente.produtoLimpezaNome();
+				double preco = atendente.produtoLimpezaPreco();
+				int quantidade = atendente.produtoLimpezaQuantidade();
+				String marca = atendente.produtoLimpezaMarca();
+				
+				Produto produtoDeLimpeza = new ProdutoDeLimpeza(nome, preco, quantidade, marca);
+				listaProduto.add(produtoDeLimpeza);
 				
 			}
 			
 			case 4 -> {
 				
-				for(Verdura verdura : listaVerdura) {
-					atendente.visualizarVerdura(verdura);
-				}
+				  if(listaProduto.isEmpty()) {
+						
+						atendente.listaVazia();
+						
+					} else {
 				
+				for(Produto produto : listaProduto) {
+					
+					
+					if(produto instanceof Fruta fruta) {
+						atendente.visualizarFruta(fruta);
+						
+					}
+				}
+			  }
 			}
 			
-			case 5 -> {
+	        case 5 -> {
+	        	
+               if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
+				
+				for(Produto produto : listaProduto) {
+					
+					if(produto instanceof Verdura verdura) {
+						atendente.visualizarVerdura(verdura);
+						
+					}
+				}
+				}
+			}
+	        
+	        case 6 -> {
+	        	
+               if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
+	        	
+	        	for(Produto produto : listaProduto) {
+	        		
+	        		if(produto instanceof ProdutoDeLimpeza produtoDeLimpeza) {
+	        			atendente.visualizarProdutoLimpeza(produtoDeLimpeza);
+	        		}
+	        	}
+				}
+	        }
+			
+			
+			case 7 -> {
+				
+             if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
 				
 				String nome = atendente.pesquisarFruta();
 				int decisao = 1;
 				
-				for(Fruta fruta : listaFruta) {
-					if(fruta.getNome().equalsIgnoreCase(nome)) {
+				for(Produto fruta : listaProduto) {
+					if(fruta instanceof Fruta && fruta.getNome().equalsIgnoreCase(nome)) {
 						atendente.frutaEncontrada(nome);
 						System.out.println("\n===INFORMAÇÕES DA FRUTA===\n");
-						atendente.visualizarFruta(fruta);
+						atendente.visualizarFruta((Fruta) fruta);
 						decisao = 0;
 						break;
 					}
+				   
 				}
 				
 				if(decisao == 1) {
 					
 					atendente.frutaNaoEncontrada();
 					
+			     	}
 				}
 				
 				
 			}
 			
-			case 6 -> {
+			case 8 -> {
+				
+             if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
 				
 				String nome = atendente.pesquisarVerdura();
 				int decisao = 1;
 				
-				for(Verdura verdura : listaVerdura) {
-					if(verdura.getNome().equalsIgnoreCase(nome)) {
+				for(Produto verdura : listaProduto) {
+					if(verdura instanceof Verdura && verdura.getNome().equalsIgnoreCase(nome)) {
 						atendente.verduraEncontrada(nome);
 						System.out.println("\n===INFORMAÇÕES DA VERDURA===\n");
-						atendente.visualizarVerdura(verdura);
+						atendente.visualizarVerdura((Verdura) verdura);
 						decisao = 0;
 						break;
 					}
@@ -103,18 +170,54 @@ public class Prateleira {
 					atendente.verduraNaoEncontrada();
 					
 				}
+				}
 				
 			}
 			
-			case 7 -> {
+			case 9 -> {
+              if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
+					
+				}
+				String nome = atendente.pesquisarProdutoLimpeza();
+				int decisao = 1;
+				
+				for(Produto produtoDeLimpeza : listaProduto) {
+					if(produtoDeLimpeza instanceof ProdutoDeLimpeza && produtoDeLimpeza.getNome().equalsIgnoreCase(nome)) {
+						atendente.produtoLimpezaEncontrado(nome);
+						System.out.println("\n===INFORMAÇÕES DO PRODUTO DE LIMPEZA===\n");
+						atendente.visualizarProdutoLimpeza((ProdutoDeLimpeza) produtoDeLimpeza);
+						decisao = 0;
+						break;
+						
+					}
+				}
+				
+				if(decisao == 1) {
+					atendente.produtoLimpezaNaoEncontrado();
+				}
+			
+			}
+			
+			
+			case 10 -> {
+				
+               if(listaProduto.isEmpty()) {
+					
+					atendente.listaVazia();
+					
+				} else {
 				
 				String nome = atendente.removerFruta();
 				int decisao = 1;
 				
-				for(Fruta fruta : listaFruta) {
+				for(Produto fruta : listaProduto) {
 					if(fruta.getNome().equalsIgnoreCase(nome)) {
 						atendente.frutaRemovida(nome);
-						listaFruta.remove(fruta);
+						listaProduto.remove(fruta);
 						decisao = 0;
 						break;
 					}
@@ -125,18 +228,25 @@ public class Prateleira {
 					atendente.frutaNaoEncontrada();
 					
 				}
+				}
 				
 			}
 			
-             case 8 -> {
+             case 11 -> {
+            	 
+            	 if(listaProduto.isEmpty()) {
+ 					
+ 					atendente.listaVazia();
+ 					
+ 				} else {
 				
 				String nome = atendente.removerVerdura();
 				int decisao = 1;
 				
-				for(Verdura verdura : listaVerdura) {
+				for(Produto verdura : listaProduto) {
 					if(verdura.getNome().equalsIgnoreCase(nome)) {
 						atendente.verduraRemovida(nome);
-						listaVerdura.remove(verdura);
+						listaProduto.remove(verdura);
 						decisao = 0;
 						break;
 					}
@@ -147,20 +257,47 @@ public class Prateleira {
 					atendente.verduraNaoEncontrada();
 					
 				}
+ 				}
 				
 			}
+             
+             case 12 -> {
+            	 
+            	 if(listaProduto.isEmpty()) {
+ 					
+ 					atendente.listaVazia();
+ 					
+ 				} else {
+            	 
+            	 String nome = atendente.removerProdutoLimpeza();
+            	 int decisao = 1;
+            	 
+            	 for(Produto produtoDeLimpeza : listaProduto) {
+            		 if(produtoDeLimpeza.getNome().equalsIgnoreCase(nome)) {
+            			 atendente.produtoLimpezaRemovido(nome);
+            			 listaProduto.remove(produtoDeLimpeza);
+            			 decisao = 0;
+            			 break;
+            		 }
+            	 }
+            	 
+            	 if(decisao == 1) {
+            		 atendente.produtoLimpezaNaoEncontrado();
+            	 }
+ 			}
+            	 
+            	 
+             }
 			
-             case 9 -> {
+             case 13 -> {
             	 
             	
             	 int total = 0;
-            	 int decisao = 1;
             	 
-            	 for(Fruta fruta : listaFruta) {
+            	 for(Produto fruta : listaProduto) {
+            		 if(fruta instanceof Fruta) {
             		 total += fruta.getQuantidade();
-            			 decisao = 0;
-            			 break;
- 
+            		 }
             	 }
             	 
         
@@ -170,23 +307,37 @@ public class Prateleira {
             	 
              
              
-               case 10 -> {
+               case 14 -> {
             	 
             
             	 int total = 0;
-            
-            	 
-            	 for(Verdura verdura : listaVerdura) {
+
+            	 for(Produto verdura : listaProduto) {
+            		 if(verdura instanceof Verdura) {
             		 total += verdura.getQuantidade();
-
+            		 
             		 }
-
-           
+            	 }
+            	 
             		 atendente.mostrarQuantidadeVerdura(total);
             	 }
+               
+               case 15 -> {
+            	   
+            	   int total = 0;
+            	   
+            	   for(Produto produtoDeLimpeza : listaProduto) {
+            		   if(produtoDeLimpeza instanceof ProdutoDeLimpeza) {
+            			   total += produtoDeLimpeza.getQuantidade();
+            			   
+            		   }
+            	   }
+            	   
+            	   atendente.mostrarQuantidadeProdutoLimpeza(total);
+               }
             	 
              }
 
-		}
+}
 	
 }
