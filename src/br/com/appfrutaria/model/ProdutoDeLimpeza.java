@@ -24,6 +24,11 @@ public class ProdutoDeLimpeza extends Produto {
 		this.marca = marca;
 	}
 	
+    public String toString() {
+    	return super.toString() +
+    			"Marca: " + marca;
+    }
+	
 	
 
 }

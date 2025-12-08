@@ -34,6 +34,11 @@ public class Fruta extends Produto {
 		
 	}
 	
+	public String toString() {
+		return super.toString() +
+				"\nPeso: " + peso + "Kg";
+	}
+	
 }
 
 	

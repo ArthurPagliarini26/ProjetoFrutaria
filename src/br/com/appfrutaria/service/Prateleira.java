@@ -20,6 +20,28 @@ public class Prateleira {
 		listaProduto = new ArrayList<>();
 		
 	}
+	
+	private boolean haAlgumaFruta() {
+	    for (Produto p : listaProduto) {
+	        if (p instanceof Fruta) return true;
+	    }
+	    return false;
+	}
+
+	private boolean haAlgumaVerdura() {
+	    for (Produto p : listaProduto) {
+	        if (p instanceof Verdura) return true;
+	    }
+	    return false;
+	}
+
+	private boolean haAlgumProdutoLimpeza() {
+	    for (Produto p : listaProduto) {
+	        if (p instanceof ProdutoDeLimpeza) 
+	        	return true;
+	    }
+	    return false;
+	}
 
 	public void gerenciarEstoque(int opcao, Atendente atendente) {
 		switch (opcao) {
@@ -59,12 +81,12 @@ public class Prateleira {
 			
 			case 4 -> {
 				
-				  if(listaProduto.isEmpty()) {
+				if (!haAlgumaFruta()) {
+				    atendente.listaFrutaVazia();
+				    
+				} else {
 						
-						atendente.listaVazia();
-						
-					} else {
-				
+					
 				for(Produto produto : listaProduto) {
 					
 					
@@ -78,11 +100,9 @@ public class Prateleira {
 			
 	        case 5 -> {
 	        	
-               if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
-				} else {
+	        	if (!haAlgumaVerdura()) {
+	        	    atendente.listaVerduraVazia();
+	        	} else {
 				
 				for(Produto produto : listaProduto) {
 					
@@ -96,11 +116,10 @@ public class Prateleira {
 	        
 	        case 6 -> {
 	        	
-               if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
-				} else {
+	        	if (!haAlgumProdutoLimpeza()) {
+	        	    atendente.listaProdutoLimpezaVazia();
+	        	    
+	        	} else {
 	        	
 	        	for(Produto produto : listaProduto) {
 	        		
@@ -114,10 +133,8 @@ public class Prateleira {
 			
 			case 7 -> {
 				
-             if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
+				if (!haAlgumaFruta()) {
+				    atendente.listaFrutaVazia();
 				} else {
 				
 				String nome = atendente.pesquisarFruta();
@@ -146,10 +163,8 @@ public class Prateleira {
 			
 			case 8 -> {
 				
-             if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
+				if (!haAlgumaVerdura()) {
+				    atendente.listaVerduraVazia();
 				} else {
 				
 				String nome = atendente.pesquisarVerdura();
@@ -175,10 +190,9 @@ public class Prateleira {
 			}
 			
 			case 9 -> {
-              if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
+				
+				if (!haAlgumProdutoLimpeza()) {
+				    atendente.listaProdutoLimpezaVazia();
 				} else {
 					
 				}
@@ -205,10 +219,8 @@ public class Prateleira {
 			
 			case 10 -> {
 				
-               if(listaProduto.isEmpty()) {
-					
-					atendente.listaVazia();
-					
+				if (!haAlgumaFruta()) {
+				    atendente.listaFrutaVazia();
 				} else {
 				
 				String nome = atendente.removerFruta();
@@ -234,11 +246,9 @@ public class Prateleira {
 			
              case 11 -> {
             	 
-            	 if(listaProduto.isEmpty()) {
- 					
- 					atendente.listaVazia();
- 					
- 				} else {
+            	 if (!haAlgumaVerdura()) {
+            		    atendente.listaVerduraVazia();
+            		} else {
 				
 				String nome = atendente.removerVerdura();
 				int decisao = 1;
@@ -262,12 +272,9 @@ public class Prateleira {
 			}
              
              case 12 -> {
-            	 
-            	 if(listaProduto.isEmpty()) {
- 					
- 					atendente.listaVazia();
- 					
- 				} else {
+            	 if (!haAlgumProdutoLimpeza()) {
+            		    atendente.listaProdutoLimpezaVazia();
+            		} else {
             	 
             	 String nome = atendente.removerProdutoLimpeza();
             	 int decisao = 1;

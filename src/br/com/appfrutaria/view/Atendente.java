@@ -2,6 +2,8 @@ package br.com.appfrutaria.view;
 
 import java.util.Scanner;
 import br.com.appfrutaria.model.*;
+import br.com.appfrutaria.service.*;
+import java.util.List;
 
 
 public class Atendente {		
@@ -66,10 +68,7 @@ public class Atendente {
 	
 	public void visualizarFruta(Fruta fruta) {
 		System.out.println("-------------------");
-		System.out.println("Nome: " + fruta.getNome());
-		System.out.println("Preço: R$" + fruta.getPreco());
-		System.out.println("Quantidade: " + fruta.getQuantidade());
-		System.out.println("Tipo: " + fruta.getPeso());
+		System.out.println(fruta);
 		
 	}
 	
@@ -178,10 +177,7 @@ public class Atendente {
 	public void visualizarVerdura(Verdura verdura) {
 		
 		System.out.println("-------------------");
-		System.out.println("Nome: " + verdura.getNome());
-		System.out.println("Preço: R$" + verdura.getPreco());
-		System.out.println("Quantidade: " + verdura.getQuantidade());
-		System.out.println("Tipo: " + verdura.getTipo());
+		System.out.println(verdura);
 		
 		
 	}
@@ -212,10 +208,7 @@ public class Atendente {
 		
 		public void visualizarProdutoLimpeza(ProdutoDeLimpeza produtoDeLimpeza) {
 			System.out.println("-------------------");
-			System.out.println("Nome: " + produtoDeLimpeza.getNome());
-			System.out.println("Preço: R$" + produtoDeLimpeza.getPreco());
-			System.out.println("Quantidade: " + produtoDeLimpeza.getQuantidade());
-			System.out.println("Marca: " + produtoDeLimpeza.getMarca());
+			System.out.println(produtoDeLimpeza);
 			
 		}
 		
@@ -255,7 +248,17 @@ public class Atendente {
 		System.out.println("Encerrando sistema...");
 	}
 	    
-	    public void listaVazia() {
-	    	System.out.println("A lista ainda está vazia");
+	    public void listaFrutaVazia() {
+	    	System.out.println("A lista de frutas ainda está vazia");
 	    }
+	    
+	    public void listaVerduraVazia() {
+	    	System.out.println("A lista de verduras ainda está vazia");
+	    }
+	    
+	    public void listaProdutoLimpezaVazia() {
+	    	System.out.println("A lista de produtos de limpeza ainda está vazia");
+	    }
+	    
+	    
 }
