@@ -34,7 +34,7 @@ public class Verdura extends Produto{
 	
 	public String toString() {
 		return super.toString() +
-				"\nTipo: " + tipo;
+				"\nTipo: " + tipo + "\n";
 	}
 	
 

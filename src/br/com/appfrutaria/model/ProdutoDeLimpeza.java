@@ -26,7 +26,7 @@ public class ProdutoDeLimpeza extends Produto {
 	
     public String toString() {
     	return super.toString() +
-    			"Marca: " + marca;
+    			"\nMarca: " + marca + "\n";
     }
 	
 	
